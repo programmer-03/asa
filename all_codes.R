@@ -94,31 +94,32 @@ print(paste("Specific Element:", specific_element))
 
 
 #6#Write an R script that takes a user-input number and uses an if/else statement to determine whether it is positive, negative, or zero. Take some numbers from users and store in x and y vectors to plot any kind of graph using it.
-# Take user input for x and y vectors
-x_str <- readline("Enter values for x (separated by space): ")
-y_str <- readline("Enter values for y (separated by space): ")
+run <- function(){
+a <- as.integer(readline(prompt = "Enter a Number: "))
 
-# Convert the space-separated strings to numeric vectors
-x <- as.numeric(strsplit(x_str, " ")[[1]])
-y <- as.numeric(strsplit(y_str, " ")[[1]])
-
-# Check if conversion was successful
-if (any(is.na(x)) || any(is.na(y))) {
-  stop("Invalid input. Please enter numeric values.")
+if(is.na(a)){
+  printf("Invalid")
+}else if(a > 0){
+  print("positive")
+}else if( a == 0){
+  print("zero")
+}else{
+  print("negative")
 }
 
-# Determine if the numbers in x and y are positive, negative, or zero
-for (i in 1:length(x)) {
-  if (x[i] > 0) {
-    print("Positive")
-  } else if (x[i] < 0) {
-    print("Negative")
-  } else {
-    print("Zero")
-  }
+
+
+x_str <- readline(prompt = "Enter: ")
+y_str <- readline(prompt = "Enter: ")
+
+x <- as.numeric(strsplit (x_str, " ") [[1]])
+y <- as.numeric(strsplit (y_str, " ") [[1]])
+x
+y
+boxplot(x, y)
 }
-# Plotting the data
-plot(x, y, main = "Plot of X and Y", xlab = "X Values", ylab = "Y Values")
+run()
+
 
 
 
