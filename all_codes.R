@@ -247,25 +247,15 @@ dotchart(data$HT)
 
 
 11#Write an R script to create standardized (Z-) scores for several variables Using the preexisting Drinks.csv data file and Display the data from drinks.csv using line graph, scatter plot, histogram and dot plot.
-data <- read.csv(file.choose())
-selected_var<-c("beer_servings","spirit_servings","wine_servings","total_litres_of_pure_alcohol")
-zscore<-scale(data[,selected_var])
-data[paste(selected_var,"Z-score")]<-zscore
-write.csv(data,"Drinks.csv",row.names=FALSE)
-print("Z-score is generated")
+data <- read.csv("Drinks.csv")
+names(data)
+stand<- c("spirit_servings", "beer_servings", "wine_servings", "total_litres_of_pure_alcohol")
+zscore<- scale(data[stand])
 
-# Display data using line graph, scatter plot, histogram, and dot plot
-# Line plot
-plot(data$beer_servings, type = "l")
+hist(zscore, main = "Histogram", col = "green")
+boxplot(zscore, main = "Box-Plot", col = "red")
+plot(zscore, type = "p", col = "red", main = "Scatter-Plot")
 
-# Scatter plot
-plot(data$beer_servings, data$spirit_servings)
-
-# Histogram
-hist(data$beer_servings)
-
-# Dot plot
-dotchart(data$beer_servings)
 
 
 
